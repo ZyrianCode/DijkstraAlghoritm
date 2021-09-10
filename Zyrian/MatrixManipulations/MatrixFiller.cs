@@ -36,7 +36,7 @@ namespace Dijkstra.Zyrian.MatrixManipulations
                     for (int j = 0; j < size; j++)
                     {
                         matrix.adjacencyMatrix[i, j] = 0;
-                        matrix.weightMatrix[i, j] = Int32.MaxValue;
+                        matrix.weightMatrix[i, j] = 0;
                     }
                 }
                 string[] words;

@@ -35,9 +35,9 @@ namespace Dijkstra.Zyrian.Formatting
         /// </summary>
         private void BuildVertices()
         {
-            for (int i = 0; i < _container.from.Count; i++)
+            for (int i = 0; i < _container.vertices.Count; i++)
             {
-                _graph.AddVertex(_container.vertices[i]);
+                _graph.AddVertex(_container.vertices[i].ToString());
             }
         }
 

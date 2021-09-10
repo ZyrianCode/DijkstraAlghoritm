@@ -27,19 +27,26 @@ namespace Dijkstra.Zyrian.MatrixManipulations
         /// <returns> контейнер списков </returns>
         public ListContainer ToList()
         {
-            for (int i = 0; i < _firstMatrix.Length; i++)
+            int lengthOfRow = (int)Math.Sqrt(_firstMatrix.Length);
+            int countOfVerticies = 0;
+            for (int i = 0; i < lengthOfRow; i++)
             {   
-                for (int j = 0; j < _firstMatrix.Length; j++)
+                for (int j = 0; j < lengthOfRow; j++)
                 {
-                    if (_firstMatrix[i, j] != 0 || _secondMatrix[i, j] != 0)
+                    if (_firstMatrix[i, j] != 0 && _secondMatrix[i, j] != 0)
                     {
                         ToFromList(i.ToString());
                         ToWhereList(j.ToString());
-                        ToVerticesList(_firstMatrix[i, j].ToString());
                         ToCostList(_secondMatrix[i, j]);
                     }
                 }
-            } 
+            }
+
+            for (int vertex = 0; countOfVerticies != lengthOfRow; vertex++) {
+                countOfVerticies++;
+                ToVerticesList(vertex.ToString()); 
+            }
+            
             return _container;
         }
 

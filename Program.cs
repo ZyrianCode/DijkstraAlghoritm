@@ -14,45 +14,37 @@ namespace Dijkstra
         {
             var graph = new Graph();
 
-            graph.AddVertex("A");
-            graph.AddVertex("B");
-            graph.AddVertex("C");
-            graph.AddVertex("D");
-            graph.AddVertex("E");
-            graph.AddVertex("F");
-            graph.AddVertex("G");
+            //graph.AddVertex("A");
+            //graph.AddVertex("B");
+            //graph.AddVertex("C");
+            //graph.AddVertex("D");
+            //graph.AddVertex("E");
+            //graph.AddVertex("F");
+            //graph.AddVertex("G");
 
-            graph.AddEdge("A", "B", 22);
-            graph.AddEdge("A", "C", 33);
-            graph.AddEdge("A", "D", 61);
-            graph.AddEdge("B", "C", 47);
-            graph.AddEdge("B", "E", 93);
-            graph.AddEdge("C", "D", 11);
-            graph.AddEdge("C", "E", 79);
-            graph.AddEdge("C", "F", 63);
-            graph.AddEdge("D", "F", 41);
-            graph.AddEdge("E", "F", 17);
-            graph.AddEdge("E", "G", 58);
-            graph.AddEdge("F", "G", 84);
+            //graph.AddEdge("A", "B", 22);
+            //graph.AddEdge("A", "C", 33);
+            //graph.AddEdge("A", "D", 61);
+            //graph.AddEdge("B", "C", 47);
+            //graph.AddEdge("B", "E", 93);
+            //graph.AddEdge("C", "D", 11);
+            //graph.AddEdge("C", "E", 79);
+            //graph.AddEdge("C", "F", 63);
+            //graph.AddEdge("D", "F", 41);
+            //graph.AddEdge("E", "F", 17);
+            //graph.AddEdge("E", "G", 58);
+            //graph.AddEdge("F", "G", 84);
 
-            var djkstra = new DijkstraAlghoritm(graph);
-            var path = djkstra.FindShortestPathByName("A", "B");
-            Console.WriteLine(path);
-            Console.ReadLine();
+            //var djkstra = new DijkstraAlghoritm(graph);
+            //var path = djkstra.FindShortestPathByName("A", "B");
+            //Console.WriteLine(path);
+            //Console.ReadLine();
 
-            //ListContainer list;
-            //MatrixFiller mf = new MatrixFiller();
-            //mf.FillMatrix();
+            graph.Print();
+            AlghoritmLauncher alghoritm = new AlghoritmLauncher();
 
-            //list =  mf.RouteToValidator();
-            //GraphCreator graphCreator = new GraphCreator(list);
-            //var graph = graphCreator.CreateGraph();
-
-            //graph.Print();
-            //AlghoritmLauncher alghoritm = new AlghoritmLauncher();
-
-            //alghoritm.SetPath("G:/C#/DijkstraAlghoritm/Zyrian/Utils/Matrix.txt");
-            //alghoritm.Start();
+            alghoritm.SetPath("E:/DijkstraAlghoritm/Zyrian/Utils/Matrix.txt");
+            alghoritm.Start();
 
 
         }

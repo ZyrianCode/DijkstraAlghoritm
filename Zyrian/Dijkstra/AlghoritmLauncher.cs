@@ -31,7 +31,7 @@ namespace Dijkstra.Zyrian.Dijkstra
                 _graph = _graphCreator.CreateGraph();
                 _graph.Print();
                 _dijkstraAlghoritm = new DijkstraAlghoritm(_graph);
-                var path = _dijkstraAlghoritm.FindShortestPathByName("A", "B");
+                var path = _dijkstraAlghoritm.FindShortestPathByName("0", "1");
                 Console.WriteLine(path);
                 Console.ReadLine();
             }
