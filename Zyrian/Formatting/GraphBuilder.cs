@@ -11,9 +11,18 @@ namespace Dijkstra.Zyrian.Formatting
 {
     public class GraphBuilder
     {
-        private ListContainer _container = new ListContainer();
+        private ListContainer _container;
         private Graph _graph = new Graph();
 
+        public GraphBuilder(ListContainer container)
+        {
+            _container = container;
+        }
+
+       /// <summary>
+       /// Строит граф из вершин и рёбер
+       /// </summary>
+       /// <returns></returns>
         public Graph BuildGraph()
         {
             BuildVertices();
@@ -21,6 +30,9 @@ namespace Dijkstra.Zyrian.Formatting
             return _graph;
         }
 
+        /// <summary>
+        /// Стороит вершины из списка вершин и добавляет в граф
+        /// </summary>
         private void BuildVertices()
         {
             for (int i = 0; i < _container.from.Count; i++)
@@ -29,6 +41,9 @@ namespace Dijkstra.Zyrian.Formatting
             }
         }
 
+        /// <summary>
+        /// Стороит рёбра из списка вершин и добавляет в граф
+        /// </summary>
         private void BuildEdges()
         {
             for (int i = 0; i < _container.from.Count; i++)

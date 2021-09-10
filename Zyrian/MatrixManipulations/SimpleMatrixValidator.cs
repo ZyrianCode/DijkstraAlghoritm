@@ -18,8 +18,17 @@ namespace Dijkstra.Zyrian.MatrixManipulations
             _secondArray = secondArray;
         }
 
+        /// <summary>
+        /// Проверяет является ли размер двух массивов идентичным
+        /// </summary>
+        /// <returns></returns>
         public bool CheckIfSizeEqual() => _firstArray.Length == _secondArray.Length;
 
+        /// <summary>
+        /// Проверяет противоречит маршрутизация в матрице смежности с матрицой стоимости
+        /// (Когда маршрута нет, а стоимость для пути есть)
+        /// </summary>
+        /// <returns></returns>
         public bool CheckIfRoutsEqual()
         {
             int correctMatches = 0;
@@ -41,6 +50,12 @@ namespace Dijkstra.Zyrian.MatrixManipulations
             return true;
         }
 
+        /// <summary>
+        /// Конкретизированная проверка правильности маршрутизации в матрицах по индексам
+        /// </summary>
+        /// <param name="firstIndex"> первый индекс </param>
+        /// <param name="secondIndex"> второй индекс </param>
+        /// <returns>Логическое true - если пути одинаково выстроены в матрицах, Логическое false - если пути выстроены неодинаково </returns>
         private bool HasSameRoutes( int firstIndex, int secondIndex)
         {
             return (_firstArray[firstIndex, secondIndex] == 0 && _secondArray[firstIndex, secondIndex] == 0) ||

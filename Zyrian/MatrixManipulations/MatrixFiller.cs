@@ -1,4 +1,5 @@
-﻿using Dijkstra.Zyrian.MatrixManipulations.CustomMatrix;
+﻿using Dijkstra.Zyrian.MatrixManipulations.CustomList;
+using Dijkstra.Zyrian.MatrixManipulations.CustomMatrix;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,18 +12,17 @@ namespace Dijkstra.Zyrian.MatrixManipulations
     public class MatrixFiller
     {
         Matrix matrix = new Matrix();
+        private ListContainer listContainer = new ListContainer();
 
-        static string path = "D:/Users/RyzenPC/Program/VisualStudio IDE/СSharp/Console/Templates/Dijkstra/Zyrian/Utils/Matrix.txt";
-
-        //public static StreamReader streamReader = new StreamReader(path);
-
-        //string line;
-
-        //int size;
+        private string _filePath;
+        public MatrixFiller(string filePath)
+        {
+            _filePath = filePath;
+        }
 
         public void FillMatrix()
         {
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(_filePath))
             {
                 string line = sr.ReadLine();
                 
@@ -65,24 +65,10 @@ namespace Dijkstra.Zyrian.MatrixManipulations
             Print(matrix.weightMatrix);
         }
 
-        public void ParseFromFile()
-        {
-            //string[] words;
-            //int v;
-            //int w;
-            //int c;
-
-            //while ((line = sr.ReadLine()) != null)
-            //{
-            //    words = line.Split(new char[] { ' ' });
-            //    v = Convert.ToInt32(words[0]);
-            //    w = Convert.ToInt32(words[1]);
-            //    c = Convert.ToInt32(words[2]);
-
-            //    matrix.adjacencyMatrix[v--, w--] = 1;
-            //    matrix.weightMatrix[v--, w--] = c;
-            //}
-        }
+        /// <summary>
+        /// Печатает матрицу
+        /// </summary>
+        /// <param name="arrayToPrint"></param>
         public void Print(int[,] arrayToPrint)
         {
             int length = arrayToPrint.GetLength(0);
@@ -90,11 +76,34 @@ namespace Dijkstra.Zyrian.MatrixManipulations
             {
                 for (int j = 0; j < length; j++)
                 {
-                    Console.WriteLine(arrayToPrint[i, j]);
+                    Console.Write(arrayToPrint[i, j] + " ");
                 }
                 Console.WriteLine();
             }            
         }
 
+        /// <summary>
+        /// Передаёт матрицу в валидатор на проверку
+        /// </summary>
+        /// <returns> контейнер списков или пустой контейнер, если матрица была невалидной </returns>
+        public ListContainer RouteToValidator()
+        {
+            SimpleMatrixValidator smv = new SimpleMatrixValidator(matrix.adjacencyMatrix, matrix.weightMatrix);
+            if (smv.CheckIfSizeEqual() && smv.CheckIfRoutsEqual())
+	        {
+                return RouteToMatrix();
+	        }
+            else return listContainer.GetEmptyList();
+        }
+        /// <summary>
+        /// Передаёт матрицу конвертироваться в контейнер списков
+        /// </summary>
+        /// <returns> список </returns>
+        private ListContainer RouteToMatrix()
+        {
+            MatrixToList matrixToList = new MatrixToList(matrix.adjacencyMatrix, matrix.weightMatrix);
+            return matrixToList.ToList();
+            
+        }
     }
 }

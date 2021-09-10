@@ -12,5 +12,7 @@ namespace Dijkstra.Zyrian.MatrixManipulations.CustomList
         public List<string> where = new List<string>();
         public List<string> vertices = new List<string>();
         public List<int> cost = new List<int>();
+        
+        public ListContainer GetEmptyList() => new ListContainer();
     }
 }
