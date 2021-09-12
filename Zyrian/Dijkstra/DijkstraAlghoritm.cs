@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dijkstra.Zyrian.Dijkstra
 {
-    public class DijkstraAlghoritm
+    public class DijkstraAlghoritm : Alghoritm
     {
         private Graph _graph;
         private List<VertexProperties> _properties;

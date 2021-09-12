@@ -11,10 +11,10 @@ namespace Dijkstra.Zyrian.Formatting
 {
     public class GraphBuilder
     {
-        private ListContainer _container;
+        private Container _container;
         private Graph _graph = new Graph();
 
-        public GraphBuilder(ListContainer container)
+        public GraphBuilder(Container container)
         {
             _container = container;
         }

@@ -7,19 +7,20 @@ namespace Dijkstra.Zyrian.Formatting
 {
     public class GraphCreator
     {
-        private ListContainer _container;
-        public GraphCreator(ListContainer container)
+        private Container _container;
+
+        public GraphCreator(Container container)
         {
             _container = container;
         }
 
         /// <summary>
-        /// Создаём граф
+        /// Создаёт граф
         /// </summary>
         /// <returns></returns>
         public Graph CreateGraph()
         {
-            GraphBuilder graphBuilder = new GraphBuilder(_container);
+            GraphBuilder graphBuilder = new(_container);
 
             return graphBuilder.BuildGraph();
         }

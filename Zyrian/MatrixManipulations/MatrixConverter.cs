@@ -9,23 +9,24 @@ using Dijkstra.Zyrian.Formatting;
 
 namespace Dijkstra.Zyrian.MatrixManipulations
 {
-    public class MatrixToList
+    public class MatrixConverter
     {
         private int[,] _firstMatrix;
         private int[,] _secondMatrix;
         
-        public MatrixToList (int[,] firstArray, int[,] secondArray)
+        private Container _container = new Container();
+
+        public MatrixConverter (int[,] firstArray, int[,] secondArray)
         {
             _firstMatrix = firstArray;
             _secondMatrix = secondArray;
         }
-        private ListContainer _container = new ListContainer();
 
         /// <summary>
         /// Конвертирует матрицу в контейнер списков
         /// </summary>
         /// <returns> контейнер списков </returns>
-        public ListContainer ToList()
+        public Container ConvertToContainer()
         {
             int lengthOfRow = (int)Math.Sqrt(_firstMatrix.Length);
             int countOfVerticies = 0;

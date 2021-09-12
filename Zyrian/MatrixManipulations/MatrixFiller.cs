@@ -12,9 +12,10 @@ namespace Dijkstra.Zyrian.MatrixManipulations
     public class MatrixFiller
     {
         Matrix matrix = new Matrix();
-        private ListContainer listContainer = new ListContainer();
+        private Container _сontainer = new Container();
 
         private string _filePath;
+
         public MatrixFiller(string filePath)
         {
             _filePath = filePath;
@@ -51,13 +52,11 @@ namespace Dijkstra.Zyrian.MatrixManipulations
                     w = Convert.ToInt32(words[1]);
                     c = Convert.ToInt32(words[2]);
 
-                    matrix.adjacencyMatrix[v-1, w-1] = 1;
-                    matrix.weightMatrix[v-1, w-1] = c;
+                    matrix.adjacencyMatrix[v - 1, w - 1] = 1;
+                    matrix.weightMatrix[v - 1, w - 1] = c;
                     Console.WriteLine($"{v} {w} {c}");
                 }
             }
-
-            //ParseFromFile();
 
             Console.WriteLine("Матрица смежности: ");
             Print(matrix.adjacencyMatrix);
@@ -86,24 +85,24 @@ namespace Dijkstra.Zyrian.MatrixManipulations
         /// Передаёт матрицу в валидатор на проверку
         /// </summary>
         /// <returns> контейнер списков или пустой контейнер, если матрица была невалидной </returns>
-        public ListContainer RouteToValidator()
+        public Container RouteToValidator()
         {
-            SimpleMatrixValidator smv = new SimpleMatrixValidator(matrix.adjacencyMatrix, matrix.weightMatrix);
+            SimpleMatrixValidator smv = new(matrix.adjacencyMatrix, matrix.weightMatrix);
             if (smv.CheckIfSizeEqual() && smv.CheckIfRoutsEqual())
 	        {
-                return RouteToMatrix();
+                return RouteToContainer();
 	        }
-            else return listContainer.GetEmptyList();
+            return _сontainer.GetEmptyContainer();
         }
+
         /// <summary>
         /// Передаёт матрицу конвертироваться в контейнер списков
         /// </summary>
-        /// <returns> список </returns>
-        private ListContainer RouteToMatrix()
+        /// <returns> контейнер списков </returns>
+        private Container RouteToContainer()
         {
-            MatrixToList matrixToList = new MatrixToList(matrix.adjacencyMatrix, matrix.weightMatrix);
-            return matrixToList.ToList();
-            
+            MatrixConverter matrixConverter = new(matrix.adjacencyMatrix, matrix.weightMatrix);
+            return matrixConverter.ConvertToContainer();            
         }
     }
 }

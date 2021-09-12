@@ -12,7 +12,7 @@ namespace Dijkstra
     {
         static void Main(string[] args)
         {
-            var graph = new Graph();
+            //var graph = new Graph();
 
             //graph.AddVertex("A");
             //graph.AddVertex("B");
@@ -40,12 +40,11 @@ namespace Dijkstra
             //Console.WriteLine(path);
             //Console.ReadLine();
 
-            graph.Print();
+            //graph.Print();
             AlghoritmLauncher alghoritm = new AlghoritmLauncher();
 
             alghoritm.SetPath("E:/DijkstraAlghoritm/Zyrian/Utils/Matrix.txt");
             alghoritm.Start();
-
 
         }
     }

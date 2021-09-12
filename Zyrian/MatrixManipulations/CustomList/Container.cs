@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dijkstra.Zyrian.MatrixManipulations.CustomList
 {
-    public class ListContainer
+    public class Container
     {
         public List<string> from = new List<string>();
         public List<string> where = new List<string>();
         public List<string> vertices = new List<string>();
         public List<int> cost = new List<int>();
         
-        public ListContainer GetEmptyList() => new ListContainer();
+        public Container GetEmptyContainer() => new();
     }
 }
